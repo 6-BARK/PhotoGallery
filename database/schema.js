@@ -56,12 +56,23 @@ const retrieve = (req, res) => {
 
 // Update
 const updateOne = (req, res) => {
-  House.findOneAndUpdate({}).exec((err) => {
+  House.updateOne({}).exec((err) => {
     if (err) {
       console.log(err);
       res.send(err);
     } else {
-      console.log('successfully updated');
+      res.send('Success');
+    }
+  });
+};
+
+const updateMany = (req, res) => {
+  House.updateMany({}).exec((err) => {
+    if (err) {
+      console.log(err);
+      res.send(err);
+    } else {
+      res.send('Success');
     }
   });
 };
@@ -69,15 +80,23 @@ const updateOne = (req, res) => {
 // Delete
 const deleteOne = (req, res) => {
   House.deleteOne({}, (err) => {
-    if (err) return handleError(err);
+    if (err) {
+      res.send(err);
+    } else {
+      res.send('Deleted query');
+    }
   });
 };
 const deleteMany = (req, res) => {
   House.deleteMany({}, (err) => {
-    if (err) return handleError(err);
+    if (err) {
+      res.send(err);
+    } else {
+      res.send('Deleted queries');
+    }
   });
 };
 
 module.exports = {
-  retrieve, save, updateOne, deleteOne, deleteMany,
+  retrieve, save, updateOne, updateMany, deleteOne, deleteMany,
 };
