@@ -18,8 +18,9 @@ const houseSchema = mongoose.Schema({
 const House = mongoose.model('House', houseSchema);
 
 // Save helper function
+// CREATE
 const save = (individualHouse) => {
-  let newHouse = House({
+  const newHouse = House({
     id: individualHouse.id,
     address: individualHouse.address,
     images: individualHouse.images,
@@ -41,6 +42,7 @@ const save = (individualHouse) => {
 
 
 // Retrieve helper function
+// READ
 const retrieve = (req, res) => {
   House.find({}).limit(1).exec((err, houses) => {
     if (err) {
@@ -52,4 +54,37 @@ const retrieve = (req, res) => {
   });
 };
 
-module.exports = { retrieve, save };
+// Update
+const updateAddress = (house) => {
+  House.replaceOne({ address: house.address }, house, { upsert: true }, (err) => {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log(`Success! Deleted: ${house}`);
+    }
+  });
+};
+
+// Delete
+const deleteOne = (individualHouse) => {
+  House.deleteOne(individualHouse, (err) => {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log(`Deleted ${individualHouse}`);
+    }
+  });
+};
+const deleteAll = (req, res) => {
+  House.deleteAll({}, (err) => {
+    if (err) {
+      res.send(err);
+    } else {
+      res.send('Deleted queries');
+    }
+  });
+};
+
+module.exports = {
+  retrieve, save, updateAddress, deleteOne, deleteAll,
+};
