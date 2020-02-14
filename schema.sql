@@ -19,4 +19,5 @@ CREATE TABLE images (
     image_url varchar(255) NOT NULL,
     FOREIGN KEY (house_id)
         REFERENCES houselisting(id)
+    PRIMARY KEY (id)
 )

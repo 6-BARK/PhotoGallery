@@ -1,0 +1,41 @@
+CRUDS:
+
+CREATE:
+	Will post to the body
+	POST /houses
+	#posts a new house to the list of houses
+
+	POST /images
+	#posts a new image to the list of images
+
+READ:
+	GET /images
+	#Get all the images
+
+	GET /houses
+	#Get all house listings
+
+	GET /houses/1 
+	#Get a the house with an id of 1
+
+	GET /houses/1/images
+	#Get all the images of the house with an id of 1
+	
+	GET /houses/1/images/5
+	#Get the image with an id of 5 from the house with an id of 1
+
+UPDATE:
+	Will updater the body
+	PUT/houses
+	#will update a current house listing or create one if it doesn’t exist
+
+	PUT/images
+	#will update a current image listing or create onf if it doesn’t exist
+
+DELETE:
+
+	DELETE/houses
+	#delete house listing specified
+
+	DELETE/image
+	#will delete image specified
