@@ -1,41 +1,102 @@
-CRUDS:
+CRUDS/API
+
+//Only one person can delete/update a picture
+//Only one person can upload or delete that house listing
 
 CREATE:
 	Will post to the body
-	POST /houses
-	#posts a new house to the list of houses
 
-	POST /images
-	#posts a new image to the list of images
+    POST user/:userid/houses/house:id
+    #Posts a new house listing under the user who has access
+    Request: json {}
+    Response: 'Success'/status code
+     
+    POST user/:userid/houses/:houseid/images/image:id
+    #Posts a new image to the house listing under the user who is posting it
+    Request: json {}
+    Response: 'Success'/status code
+
+    POST /user/:userid/savedHouses/
+    #Adds a new house to the users saved list
+    Request: json {}
+    Response: 'Success'/status code
 
 READ:
-	GET /images
-	#Get all the images
 
-	GET /houses
-	#Get all house listings
+	GET user/:userid/houses/:houseid
+	#Get the house listing made by the user
 
-	GET /houses/1 
-	#Get a the house with an id of 1
+    Request: json {}
+    Response: json {}
+    
+	GET /user/:userid/savedHouses/
+	#Get the houses saved by the user
 
-	GET /houses/1/images
-	#Get all the images of the house with an id of 1
+    Request: json {}
+    Response: json {}
+
+    GET /user/:userid/savedHouses/house/:houseid
+	#Get a specific house saved by the user
+
+    Request: json {}
+    Response: json {}
 	
-	GET /houses/1/images/5
-	#Get the image with an id of 5 from the house with an id of 1
+	GET /user/:userid/houses/:houseid/image
+	#Get the images the user posted to the house listing
+
+    Request: json {}
+    Response: json {}
+
+    GET /user/:userid/houses/:houseid/image/:imageid
+    #Get the image the user posted to the house listing
 
 UPDATE:
-	Will updater the body
-	PUT/houses
-	#will update a current house listing or create one if it doesn’t exist
+	Will update the body
 
-	PUT/images
-	#will update a current image listing or create onf if it doesn’t exist
+    PUT user/:userid/houses/
+    #will allow user to update his house listings
+
+    Request: json {}
+    Response: 'Successfully updated', status code
+
+    PUT user/:userid/houses/house:id
+    #will allow user to update a specific house listing
+
+    Request: json {}
+    Response: 'Successfully updated', status code
+
+	PUT user/:userid/houses/house:id/images
+	#will allow user to update a house's set of images
+
+    Request: json {},
+    Response: 'Successfully updated', status code
+
+    PUT user/:userid/houses/house:id/images/image:id
+    #will allow user to update an image from the house's images
+
+    Request: json {},
+    Response: 'Successfully updated', status code
 
 DELETE:
 
-	DELETE/houses
-	#delete house listing specified
+	DELETE user/:userid/houses/
+    #will allow the user to delete multiple house listings
+    Request: json {},
+    Response: 'Successfully deleted', status code
 
-	DELETE/image
-	#will delete image specified
+    DELETE user/:userid/houses/house:id
+    #will allow the user to delete a house listing
+    Request: json {},
+    Response: 'Successfully deleted', status code
+
+    DELETE user/:userid/houses/house:id/images
+    #will allow the user to delete multiple images from the house listing
+    Request: json {},
+    Response: 'Successfully deleted', status code
+
+    DELETE user/:userid/houses/house:id/images/image:id
+    #will allow the user to delete a specific image
+
+    Request: json {},
+    Response: status code, success message
+

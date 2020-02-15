@@ -1,20 +1,20 @@
-var mongoose = require('mongoose');
+const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/newxillow', {useNewUrlParser: true});
+mongoose.connect('mongodb://localhost/newxillow', { useNewUrlParser: true });
 mongoose.connection.dropDatabase();
-
-const House = mongoose.model('House', houseSchema);
 
 const houseSchema = mongoose.Schema({
   id: { type: Number, required: true, unique: true },
-  address: { type: String, required: true, unique: true},
+  sqft: { type: String, required: true, unique: true },
   images: [{ type: String }],
   bedrooms: { type: Number, required: true },
   bathrooms: { type: Number, required: true },
   price: { type: Number, required: true },
 });
 
-//CREATE
+const House = mongoose.model('House', houseSchema);
+
+// CREATE
 const create = (individualHouse) => {
   const newHouse = House({
     id: individualHouse.id,
@@ -26,7 +26,7 @@ const create = (individualHouse) => {
 
   });
 
-  newHouse.save((err, success) => {
+  newHouse.save((err) => {
     if (err) {
       console.log(err);
     } else {
