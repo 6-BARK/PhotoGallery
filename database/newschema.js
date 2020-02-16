@@ -10,6 +10,7 @@ const houseSchema = mongoose.Schema({
   bedrooms: { type: Number, required: true },
   bathrooms: { type: Number, required: true },
   price: { type: Number, required: true },
+  savedHouses: { type: Array, required: false },
 });
 
 const House = mongoose.model('House', houseSchema);

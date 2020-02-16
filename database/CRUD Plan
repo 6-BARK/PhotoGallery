@@ -6,17 +6,17 @@ CRUDS/API
 CREATE:
 	Will post to the body
 
-    POST user/:userid/houses/house:id
+    POST user/:userid/houses/
     #Posts a new house listing under the user who has access
     Request: json {}
     Response: 'Success'/status code
      
-    POST user/:userid/houses/:houseid/images/image:id
+    POST user/:userid/houses/images/
     #Posts a new image to the house listing under the user who is posting it
     Request: json {}
     Response: 'Success'/status code
 
-    POST /user/:userid/savedHouses/
+    POST /user/:usedid/savedHouses/
     #Adds a new house to the users saved list
     Request: json {}
     Response: 'Success'/status code
