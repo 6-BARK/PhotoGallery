@@ -6,9 +6,6 @@ USE houses
 
 CREATE TABLE users (
     id int NOT NULL AUTO_INCREMENT,
-    usersavedhomes int(10),
-    FOREIGN KEY (usersavedhomes)
-        REFERENCES usersavedhomes(id)
     PRIMARY KEY (id)
 )
 
