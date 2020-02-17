@@ -19,12 +19,15 @@ const House = mongoose.model('House', houseSchema);
 // CREATE
 const create = (individualHouse) => {
   const newHouse = House({
-    id: individualHouse.id,
+    houseid: individualHouse.id,
+    userid: individualHouse.userid,
     address: individualHouse.address,
+    sqft: individualHouse.sqft,
     images: individualHouse.images,
     bedrooms: individualHouse.bedrooms,
     bathrooms: individualHouse.bathrooms,
     price: individualHouse.price,
+    savedHouses: individualHouse.savedHouses,
 
   });
 
