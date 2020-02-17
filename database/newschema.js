@@ -4,13 +4,14 @@ mongoose.connect('mongodb://localhost/newxillow', { useNewUrlParser: true });
 mongoose.connection.dropDatabase();
 
 const houseSchema = mongoose.Schema({
-  id: { type: Number, required: true, unique: true },
+  userid: { type: Number, required: true, unique: true },
+  houseid: { type: Number, required: true, unique: true },
   sqft: { type: String, required: true, unique: true },
   images: [{ type: String }],
   bedrooms: { type: Number, required: true },
   bathrooms: { type: Number, required: true },
   price: { type: Number, required: true },
-  savedHouses: { type: Array, required: false },
+  savedHouses: [{ type: Number, required: false }],
 });
 
 const House = mongoose.model('House', houseSchema);
