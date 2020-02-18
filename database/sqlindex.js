@@ -47,7 +47,7 @@ const createImages = () => {
 };
 
 const createSavedHouses = () => {
-  for (let i = 0; i < 10000000; i += 1) {
+  for (let i = 0; i < 100000; i += 1) {
     connection.query('INSERT INTO usersavedhomes (id, users_id, house_id) VALUES (?, ?, ?)',
       [null, Math.floor((Math.random() * 99999) + 1), Math.floor((Math.random() * 9999999) + 1)],
       (err) => {

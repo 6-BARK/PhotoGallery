@@ -5,3 +5,13 @@ bundle.js
 SDCimages
 
 getpictures.js
+
+houselisting.csv
+
+images.csv
+
+users.csv
+
+savedHouses.csv
+
+database/config.js

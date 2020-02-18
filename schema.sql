@@ -2,12 +2,12 @@ DROP DATABASE IF EXISTS houses;
 
 CREATE DATABASE houses;
 
-USE houses
+USE houses;
 
 CREATE TABLE users (
     id int NOT NULL AUTO_INCREMENT,
     PRIMARY KEY (id)
-)
+);
 
 CREATE TABLE houselisting (
     id int NOT NULL AUTO_INCREMENT,
@@ -19,7 +19,7 @@ CREATE TABLE houselisting (
     FOREIGN KEY (users_id)
         REFERENCES users(id),
     PRIMARY KEY (id)
-)
+);
 
 CREATE TABLE images (
     id int NOT NULL AUTO_INCREMENT,
@@ -31,7 +31,7 @@ CREATE TABLE images (
     FOREIGN KEY (users_id)
         REFERENCES users(id),
     PRIMARY KEY (id)
-)
+);
 
 CREATE TABLE usersavedhomes (
     id int NOT NULL AUTO_INCREMENT,
@@ -41,6 +41,6 @@ CREATE TABLE usersavedhomes (
         REFERENCES users(id),
     FOREIGN KEY (house_id) 
         REFERENCES houselisting(id),
-    UNIQUE (users_id, house_id)
+    UNIQUE (users_id, house_id),
     PRIMARY KEY (id)
-)
+);
