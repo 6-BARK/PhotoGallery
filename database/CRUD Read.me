@@ -9,19 +9,15 @@ CREATE:
     POST user/:userid/houses/
     #Posts a new house listing under the user who has access
     Request: json {
-        id: int NOT NULL AUTO_INCREMENT,
+        houseid: int NOT NULL AUTO_INCREMENT,
         users_id: int NOT NULL,
-        sqft: int(10) NOT NULL,
-        bedroom: int(10) NOT NULL,
-        bathroom: int(10) NOT NULL,
-        price: int(10) NOT NULL, 
     }
     Response: 'Success'/status code
      
     POST user/:userid/houses/images/
     #Posts a new image to the house listing under the user who is posting it
     Request: json {
-        id:int NOT NULL AUTO_INCREMENT,
+        image_id:int NOT NULL AUTO_INCREMENT,
         users_id: int NOT NULL,
         house_id: int NOT NULL,
         image_url: varchar(255) NOT NULL,   
@@ -44,7 +40,7 @@ READ:
 
     Request: not needed
     Response: json {
-        id: int NOT NULL AUTO_INCREMENT,
+        houseid: int NOT NULL AUTO_INCREMENT,
         users_id: int NOT NULL,
         sqft: int(10) NOT NULL,
         bedroom: int(10) NOT NULL,
@@ -57,7 +53,7 @@ READ:
 
     Request: not needed
     Response: json {
-        id: int NOT NULL AUTO_INCREMENT,
+        savedHousesid: int NOT NULL AUTO_INCREMENT,
         users_id: int NOT NULL,
         house_id: int NOT NULL,
     }
@@ -67,12 +63,8 @@ READ:
 
     Request: not needed
     Response: json {
-        id: int NOT NULL AUTO_INCREMENT,
+        houseid: int NOT NULL AUTO_INCREMENT,
         users_id: int NOT NULL,
-        sqft: int(10) NOT NULL,
-        bedroom: int(10) NOT NULL,
-        bathroom: int(10) NOT NULL,
-        price: int(10) NOT NULL,
     }
 	
 	GET /user/:userid/houses/:houseid/image
@@ -145,7 +137,7 @@ DELETE:
 	DELETE user/:userid/houses/
     #will allow the user to delete multiple house listings
     Request: json {
-        id: int NOT NULL AUTO_INCREMENT,
+        houseid: int NOT NULL AUTO_INCREMENT,
         users_id: int NOT NULL,
         sqft: int(10) NOT NULL,
         bedroom: int(10) NOT NULL,
@@ -157,12 +149,8 @@ DELETE:
     DELETE user/:userid/houses/house:id
     #will allow the user to delete a house listing
     Request: json {
-        id: int NOT NULL AUTO_INCREMENT,
+        houseid: int NOT NULL AUTO_INCREMENT,
         users_id: int NOT NULL,
-        sqft: int(10) NOT NULL,
-        bedroom: int(10) NOT NULL,
-        bathroom: int(10) NOT NULL,
-        price: int(10) NOT NULL,
     },
     Response: 'Successfully deleted', status code
 
