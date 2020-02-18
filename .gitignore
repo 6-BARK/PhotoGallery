@@ -13,3 +13,5 @@ images.csv
 users.csv
 
 savedHouses.csv
+
+database/config.js
