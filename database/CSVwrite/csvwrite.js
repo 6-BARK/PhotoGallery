@@ -2,17 +2,18 @@ const faker = require('faker');
 const fs = require('fs');
 
 const writeUsers = fs.createWriteStream('./users.csv');
-writeUsers.write('id', 'utf8');
+writeUsers.write('id, userId\n', 'utf8');
 
 function writeTenMillionUsers(writer, encoding, callback) {
-  let i = 10000000;
+  let i = 100000;
   let id = 0;
   function write() {
     let ok = true;
     do {
       i -= 1;
       id += 1;
-      const data = `${id}\n`;
+      const userId = id;
+      const data = `${id}, ${userId}\n`;
       if (i === 0) {
         writer.write(data, encoding, callback);
       } else {
