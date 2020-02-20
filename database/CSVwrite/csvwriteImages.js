@@ -2,7 +2,7 @@ const faker = require('faker');
 const fs = require('fs');
 
 const writeUsers = fs.createWriteStream('./images.csv');
-writeUsers.write('id, usersId, houseId, imageUrl', 'utf8');
+writeUsers.write('id, usersId, houseId, imageUrl\n', 'utf8');
 
 function writeTenMillionImages(writer, encoding, callback) {
   let i = 10000000;

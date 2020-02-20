@@ -2,7 +2,7 @@ const fs = require('fs');
 const mysql = require('mysql');
 const fastcsv = require('fast-csv');
 
-const stream = fs.createReadStream('./users.csv');
+const stream = fs.createReadStream('users.csv');
 const csvData = [];
 const csvStream = fastcsv
   .parse()
@@ -26,8 +26,7 @@ const csvStream = fastcsv
       if (error) {
         console.error(error);
       } else {
-        let query =
-          'INSERT INTO users (id) VALUES ?';
+        const query = "INSERT INTO users (id) VALUES ?";
         connection.query(query, [csvData], (error, response) => {
           console.log(error || response);
         });

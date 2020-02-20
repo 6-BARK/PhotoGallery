@@ -1,3 +1,4 @@
+
 DROP DATABASE IF EXISTS houses;
 
 CREATE DATABASE houses;

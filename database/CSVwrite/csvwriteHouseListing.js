@@ -17,7 +17,7 @@ function writeTenMillionHouseListings(writer, encoding, callback) {
       const bedroom = Math.floor((Math.random() * 10) + 1);
       const bathroom = Math.floor((Math.random() * 6) + 1);
       const price = Math.floor((Math.random() * 20000000) + 50000);
-      const data = `${id},${usersId},${sqft}, ${bedroom}, ${bathroom},${price},\n`;
+      const data = `${id},${usersId},${sqft}, ${bedroom}, ${bathroom},${price}\n`;
       if (i === 0) {
         writer.write(data, encoding, callback);
       } else {
