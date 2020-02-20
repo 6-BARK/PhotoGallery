@@ -130,29 +130,11 @@ UPDATE:
 
 DELETE:
 
-	DELETE user/:userid/houses/
-    #will allow the user to delete multiple house listings
-    Request: json {
-        houseid: int NOT NULL AUTO_INCREMENT,
-        users_id: int NOT NULL,
-    },
-    Response: 'Successfully deleted', status code
-
     DELETE user/:userid/houses/house:id
     #will allow the user to delete a house listing
     Request: json {
         house_id: int NOT NULL AUTO_INCREMENT,
         users_id: int NOT NULL,
-    },
-    Response: 'Successfully deleted', status code
-
-    DELETE user/:userid/houses/house:id/images
-    #will allow the user to delete multiple images from the house listing
-    Request: json {
-        id:int NOT NULL AUTO_INCREMENT,
-        users_id: int NOT NULL,
-        house_id: int NOT NULL,
-        image_url: varchar(255) NOT NULL, 
     },
     Response: 'Successfully deleted', status code
 
