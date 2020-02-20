@@ -88,7 +88,6 @@ UPDATE:
     #will allow user to update their house listings
 
     Request: json {
-        id: int NOT NULL AUTO_INCREMENT,
         users_id: int NOT NULL,
         sqft: int(10) NOT NULL,
         bedroom: int(10) NOT NULL,
@@ -101,7 +100,6 @@ UPDATE:
     #will allow user to update a specific house listing
 
     Request: json {
-        houseid: int NOT NULL AUTO_INCREMENT,
         users_id: int NOT NULL,
         sqft: int(10) NOT NULL,
         bedroom: int(10) NOT NULL,
@@ -114,7 +112,6 @@ UPDATE:
 	#will allow user to update a house's set of images
 
     Request: json {
-        imageid:int NOT NULL AUTO_INCREMENT,
         users_id: int NOT NULL,
         house_id: int NOT NULL,
         image_url: varchar(255) NOT NULL,   
@@ -125,7 +122,6 @@ UPDATE:
     #will allow user to update an image from the house's images
 
     Request: json {
-        imageid:int NOT NULL AUTO_INCREMENT,
         users_id: int NOT NULL,
         house_id: int NOT NULL,
         image_url: varchar(255) NOT NULL,   
@@ -145,7 +141,7 @@ DELETE:
     DELETE user/:userid/houses/house:id
     #will allow the user to delete a house listing
     Request: json {
-        houseid: int NOT NULL AUTO_INCREMENT,
+        house_id: int NOT NULL AUTO_INCREMENT,
         users_id: int NOT NULL,
     },
     Response: 'Successfully deleted', status code

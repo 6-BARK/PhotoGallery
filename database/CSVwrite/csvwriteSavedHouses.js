@@ -2,10 +2,10 @@ const faker = require('faker');
 const fs = require('fs');
 
 const writeUsers = fs.createWriteStream('./savedHouses.csv');
-writeUsers.write('id, usersId, houseId', 'utf8');
+writeUsers.write('id, usersId, houseId\n', 'utf8');
 
 function writeSavedHouses(writer, encoding, callback) {
-  let i = 100000;
+  let i = 500000;
   let id = 0;
   function write() {
     let ok = true;
