@@ -1,1 +1,0 @@
-//Determines how an application responds to a client for a specific endpoint (HTTP request)
