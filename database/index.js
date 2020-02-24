@@ -42,12 +42,13 @@ const getUsersSavedHouses = (userid, callback) => {
 };
 
 const postImagesToHouseListing = (userid, houseid, imageurl, callback) => {
-  const query = 'INSERT INTO images(users_id, house_id, image_url) VALUES (?, ?);';
+  const query = 'INSERT INTO images(users_id, house_id, image_url) VALUES (?, ?, ?);';
+  console.log(query);
   connection.query(query, [userid, houseid, imageurl], (err) => {
     if (err) {
-      callback(err);
+      console.log(err);
     } else {
-      callback('Posted!');
+      callback();
     }
   });
 };
@@ -56,7 +57,6 @@ const addSavedHouse = (userid, houseid, callback) => {
   const query = `INSERT INTO usersavedhomes(users_id, house_id) VALUES (${parseInt(userid, 10)}, ${parseInt(houseid, 10)});`;
   connection.query(query, (err) => {
     if (err) {
-      console.log(err);
       callback(err);
     } else {
       callback();

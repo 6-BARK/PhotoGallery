@@ -33,9 +33,8 @@ const handleGetUsersSavedHouses = (req, res) => {
 };
 
 const handleAddSavedHouse = (req, res) => {
-  const usersid = req.params.userid;
-  const homeid = req.params.houseid;
-  addSavedHouse(usersid, homeid, (err) => {
+  const { userid, houseid } = req.params;
+  addSavedHouse(userid, houseid, (err) => {
     if (err) {
       res.status(500).end();
     } else {
@@ -44,4 +43,21 @@ const handleAddSavedHouse = (req, res) => {
   });
 };
 
-module.exports = { handleGetHouseListingsImages, handleGetUsersSavedHouses, handleAddSavedHouse };
+const handlePostImagesToHouseListing = (req, res) => {
+  const { userid, houseid } = req.params;
+  const { imageurl } = req.body;
+  postImagesToHouseListing(userid, houseid, imageurl, (err) => {
+    if (err) {
+      res.status(500).end();
+    } else {
+      res.status(200).send('savedImage');
+    }
+  });
+};
+
+module.exports = {
+  handleGetHouseListingsImages,
+  handleGetUsersSavedHouses,
+  handleAddSavedHouse,
+  handlePostImagesToHouseListing,
+};
