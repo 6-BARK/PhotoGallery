@@ -54,6 +54,7 @@
     "fs": "0.0.1-security",
     "morgan": "^1.9.1",
     "mysql": "^2.18.1",
+    "newrelic": "^6.4.1",
     "nodemon": "^1.19.2",
     "react": "^16.10.1",
     "react-dom": "^16.10.1",

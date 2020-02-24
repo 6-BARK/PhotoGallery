@@ -1,7 +1,11 @@
+require('newrelic');
+
 const express = require('express');
 const path = require('path');
+
 const app = express();
 const morgan = require('morgan');
+
 const PORT = 3004;
 const bodyParser = require('body-parser');
 // const schema = require('../database/schema.js');
