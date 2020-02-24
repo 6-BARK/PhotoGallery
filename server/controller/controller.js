@@ -55,9 +55,47 @@ const handlePostImagesToHouseListing = (req, res) => {
   });
 };
 
+const handleUpdateHouseListingImage = (req, res) => {
+  const { userid, houseid } = req.params;
+  const { imageurl } = req.body;
+  updateHouseListingImage(userid, houseid, imageurl, (err) => {
+    if (err) {
+      res.status(500).end();
+    } else {
+      res.status(200).send('updated Image');
+    }
+  });
+};
+
+const handleDeleteHouseListingImage = (req, res) => {
+  const { userid, houseid } = req.params;
+  deleteHouseListingImage(userid, houseid, (err) => {
+    if (err) {
+      console.log(err);
+      res.status(500).end();
+    } else {
+      res.status(200).send('House Image Deleted');
+    }
+  });
+};
+
+const handleDeleteSavedHouse = (req, res) => {
+  const { userid, houseid } = req.params;
+  deleteSavedHouse(userid, houseid, (err) => {
+    if (err) {
+      res.status(500).end();
+    } else {
+      res.status(200).send('House unsaved');
+    }
+  });
+};
+
 module.exports = {
   handleGetHouseListingsImages,
   handleGetUsersSavedHouses,
   handleAddSavedHouse,
   handlePostImagesToHouseListing,
+  handleUpdateHouseListingImage,
+  handleDeleteHouseListingImage,
+  handleDeleteSavedHouse,
 };

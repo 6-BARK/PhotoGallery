@@ -19,5 +19,9 @@ app.get('/user/:userid/UsersSavedHouses/', Controller.handleGetUsersSavedHouses)
 app.post('/user/:userid/UsersSavedHouses/house/:houseid', Controller.handleAddSavedHouse);
 app.post('/user/:userid/houses/:houseid/images/', Controller.handlePostImagesToHouseListing);
 
+app.put('/user/:userid/houses/:houseid/images/', Controller.handleUpdateHouseListingImage);
+
+app.delete('/user/:userid/houses/:houseid/images/', Controller.handleDeleteHouseListingImage);
+app.delete('/user/:userid/UsersSavedHouses/house/:houseid', Controller.handleDeleteSavedHouse);
 
 app.listen(PORT, () => console.log('Listening on port: ' + PORT));

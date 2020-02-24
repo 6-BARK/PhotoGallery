@@ -1,7 +1,6 @@
 const mysql = require('mysql');
-const sql = require('./config.js');
 
-let connection = mysql.createConnection({
+const connection = mysql.createConnection({
   host: 'localhost',
   user: 'root',
   password: 'Roswell00',
@@ -65,34 +64,34 @@ const addSavedHouse = (userid, houseid, callback) => {
 };
 
 const updateHouseListingImage = (userid, houseid, imageurl, callback) => {
-  const query = `UPDATE images SET image_url = '${imageurl}' WHERE (house_id = '${houseid}' AND users_id = '${userid}');`;
+  const query = `UPDATE images SET image_url = ${imageurl} WHERE (house_id = '${houseid}' AND users_id = '${userid}');`;
   connection.query(query, (err) => {
     if (err) {
       callback(err);
     } else {
-      callback('Images Updated!');
+      callback();
     }
   });
 };
 
-const deleteHouseListingImage = (userid, houseid, imageurl, callback) => {
-  const query = `DELETE FROM images WHERE (users_id = '${userid}' AND house_id = '${houseid}' AND image_url = '${imageurl}');`;
+const deleteHouseListingImage = (userid, houseid, callback) => {
+  const query = `DELETE FROM images WHERE (users_id = '${userid}' AND house_id = '${houseid}');`;
   connection.query(query, (err) => {
     if (err) {
       callback(err);
     } else {
-      callback('Images Deleted');
+      callback();
     }
   });
 };
 
 const deleteSavedHouse = (userid, houseid, callback) => {
-  const query = `DELETE FROM usersavedhomes WHERE (users_id = '${userid}', house_id = '${houseid}');`;
+  const query = `DELETE FROM usersavedhomes WHERE (users_id = '${userid}' AND house_id = '${houseid}');`;
   connection.query(query, (err) => {
     if (err) {
       callback(err);
     } else {
-      callback('Unliked Saved House');
+      callback();
     }
   });
 };
